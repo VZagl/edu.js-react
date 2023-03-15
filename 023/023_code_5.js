@@ -10,5 +10,16 @@
 
 (Подсказка: в конце фигуры есть перенос строки \n, который тоже учитывается в тестах. 
 */
-const lines = 5;
+const lines = 6;
 let result = '';
+
+for (let i=0; i<lines; i++){
+	for(let j=1; j<lines-i; j++){
+		result += ' ';
+	}
+	for(let j=0; j<i*2+1; j++){
+		result += '*';
+	}
+	result += '\n';
+}
+console.log(result);
