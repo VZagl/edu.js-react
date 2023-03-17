@@ -38,6 +38,7 @@ module.exports = {
 		'no-unused-vars': [
 			'warn'
 			//, { 'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false }
-		]
+		],
+		'no-inner-declarations' : ['warn']
 	}
 };
