@@ -1,4 +1,3 @@
-console.log('=> js/script.js');
 'use strict';
 
 console.log( 4 + '5');
@@ -9,13 +8,13 @@ let incr = 10, decr = 10;
 console.log( `incr = ${incr}, incr++=${incr++}, incr = ${incr}, ++incr=${++incr}` );
 console.log( `decr = ${decr}, decr--=${decr--}, decr = ${decr}, --decr=${--decr}` );
 
-console.log( `5%2= ${5%2}` );
+console.log( `5%2= ${5 % 2}` );
 
-console.log( `2*4 ==  8  (${2*4 == 8})` );
-console.log( `2*4 == '8' (${2*4 == '8'})` );
+console.log( `2*4 ==  8  (${2 * 4 == 8})` );
+console.log( `2*4 == '8' (${2 * 4 == '8'})` );
 
-console.log( `2*4 ===  8  (${2*4 === 8})` );
-console.log( `2*4 === '8' (${2*4 === '8'})` );
+console.log( `2*4 ===  8  (${2 * 4 === 8})` );
+console.log( `2*4 === '8' (${2 * 4 === '8'})` );
 
 let isChecked = false,
 	isClosed = false;

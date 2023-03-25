@@ -1,10 +1,14 @@
 'use strict';
 
-const getCounter = ()=> {
+const getCounter = () => {
 	let counter = 10;
 
-	const fCnr1 = ()=> ++counter;
-	const fCnr2 = ()=> ++counter;
+	const fCnr1 = () => {
+		return counter += 1;
+	}
+	const fCnr2 = () => {
+		return counter += 1;
+	}
 
 	return {fCnr1, fCnr2};
 };

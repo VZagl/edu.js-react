@@ -19,11 +19,13 @@
 		};
 		return myFunction;
 	}
+
 	const inc1 = createCounter();
 	const c11 = inc1();
 	const c12 = inc1();
 	const c13 = inc1();
 	console.log('c1*:', c11, c12, c13);
+	
 	const inc2 = createCounter();
 	const c21 = inc2();
 	const c22 = inc2();
@@ -48,16 +50,18 @@ counter 10
 	function createCounter() { // область "область_2"
 		//let counter = 20;
 		const myFunction = function() {
-			counter = counter + 1;
+			counter += 1;
 			return counter;
 		};
 		return myFunction;
 	}
+
 	const inc1 = createCounter();
 	const c11 = inc1();
 	const c12 = inc1();
 	const c13 = inc1();
 	console.log('c1*:', c11, c12, c13);
+	
 	const inc2 = createCounter();
 	const c21 = inc2();
 	const c22 = inc2();

@@ -30,39 +30,41 @@ findMaxNumber(1, 5, '6', '10');  =>  0
 'use strict';
 
 function getTimeFromMinutes(_minutes) {
-	if( typeof(_minutes)!='number' || !Number.isInteger(_minutes) || _minutes<0 ) 
+	if( typeof(_minutes) != 'number' || !Number.isInteger(_minutes) || _minutes < 0 ) {
 		return 'Ошибка, проверьте данные';
-	const vHours = Math.floor(_minutes/60);
-	const vMinutes = _minutes - vHours*60;
-	if( vHours === 1 )
+	}
+	const vHours = Math.floor(_minutes / 60);
+	const vMinutes = _minutes - vHours * 60;
+	if( vHours === 1 ) {
 		return `Это ${vHours} час и ${vMinutes} минут`;
-	else if( [2,3,4].includes(vHours) )
+	}	else if([2, 3, 4].includes(vHours) ) {
 		return `Это ${vHours} часа и ${vMinutes} минут`;
-	else
+	}	else {
 		return `Это ${vHours} часов и ${vMinutes} минут`;
-
+	}
 }
-console.log( '\n1', getTimeFromMinutes(150) , '\n>', 'Это 2 часа и 30 минут' );
-console.log( '\n2', getTimeFromMinutes(50)  , '\n>', 'Это 0 часов и 50 минут' );
-console.log( '\n3', getTimeFromMinutes(0)   , '\n>', 'Это 0 часов и 0 минут' );
-console.log( '\n4', getTimeFromMinutes(-150), '\n>', 'Ошибка, проверьте данные' );
+console.log('\n1', getTimeFromMinutes(150) , '\n>', 'Это 2 часа и 30 минут');
+console.log('\n2', getTimeFromMinutes(50)  , '\n>', 'Это 0 часов и 50 минут');
+console.log('\n3', getTimeFromMinutes(0)   , '\n>', 'Это 0 часов и 0 минут');
+console.log('\n4', getTimeFromMinutes(-150), '\n>', 'Ошибка, проверьте данные');
 
 console.log();
-for(let i=1; i<=700; i+=60){
-	console.log( `\t${i}\t`, getTimeFromMinutes(i) );
+for (let i = 1; i <= 700; i += 60) {
+	console.log(`\t${i}\t`, getTimeFromMinutes(i) );
 }
 let i = 's';
-console.log( `\t${i}\t`, getTimeFromMinutes(i) );
+console.log(`\t${i}\t`, getTimeFromMinutes(i) );
 i = 12.34;
-console.log( `\t${i}\t`, getTimeFromMinutes(i) );
+console.log(`\t${i}\t`, getTimeFromMinutes(i) );
 
 // 2
 function findMaxNumber(_n1, _n2, _n3, _n4) {
-	if( typeof(_n1)!='number' || typeof(_n2)!='number' || typeof(_n3)!='number' || typeof(_n4)!='number')
+	if( typeof(_n1) != 'number' || typeof(_n2) != 'number' || typeof(_n3) != 'number' || typeof(_n4) != 'number') {
 		return 0;
-	return Math.max( _n1, _n2, _n3, _n4 );
+	}
+	return Math.max(_n1, _n2, _n3, _n4);
 }
 
-console.log( '\n1', findMaxNumber(1, 5, 6.6, 11)  , '\n>', 11 );
-console.log( '\n2', findMaxNumber(1, 5, '6', '10'), '\n>',  0 );
-console.log( '\n1', findMaxNumber(1, 5, 6.6, -11)  , '\n>', 6.6 );
+console.log('\n1', findMaxNumber(1, 5, 6.6, 11)  , '\n>', 11);
+console.log('\n2', findMaxNumber(1, 5, '6', '10'), '\n>',  0);
+console.log('\n1', findMaxNumber(1, 5, 6.6, -11) , '\n>', 6.6);

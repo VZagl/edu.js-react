@@ -13,11 +13,11 @@
 const lines = 6;
 let result = '';
 
-for (let i=0; i<lines; i++){
-	for(let j=1; j<lines-i; j++){
+for (let i = 0; i < lines; i++) {
+	for (let j = 1; j < lines-i; j++) {
 		result += ' ';
 	}
-	for(let j=0; j<i*2+1; j++){
+	for (let j = 0; j < i * 2 + 1; j++) {
 		result += '*';
 	}
 	result += '\n';

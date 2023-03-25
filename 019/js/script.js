@@ -1,4 +1,3 @@
-console.log('=> js/script.js');
 'use strict';
 
 let numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '0');
@@ -13,7 +12,7 @@ const personalMovieDB = {
 };
 
 const countFilms = 2;
-for ( let i=0; i<countFilms; i++ ) {
+for (let i = 0; i < countFilms; i++) {
 	let lastFilmName = prompt('Один из последних просмотренных фильмов?', '');
 	let lastFilmRate = prompt('На сколько оцените его?', '0');
 	personalMovieDB.movies[lastFilmName] = lastFilmRate;

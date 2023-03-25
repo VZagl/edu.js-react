@@ -1,22 +1,26 @@
 // Место для первой задачи
 function firstTask() {
-	for (let i=5; i<=10; i++) {
+	for (let i = 5; i <= 10; i++) {
 		console.log(i);
 	}
 }
 
 // Место для второй задачи
 function secondTask() {
-	for (let i=20; i>=10; i--) {
-		if (i===13) break;
+	for (let i = 20; i >= 10; i--) {
+		if (i === 13) {
+			break;
+		}
 		console.log(i);
 	}
 }
 
 // Место для третьей задачи
 function thirdTask() {
-	for (let i=2; i<=10; i++) {
-		if (i%2===1) continue;
+	for (let i = 2; i <= 10; i++) {
+		if (i % 2 === 1) {
+			continue;
+		}
 		console.log(i);
 	}
 }
@@ -34,8 +38,8 @@ function thirdTask() {
 // }
 
 function fourthTask() {
-	let i=1;
-	while (i<16) {
+	let i = 1;
+	while (i < 16) {
 		i++;
 		if (i % 2 === 0) {
 			continue;
@@ -50,8 +54,8 @@ function fourthTask() {
 function fifthTask() {
 
 	const arrayOfNumbers = [];
-	for (let i=5; i<=10; i++) {
-		arrayOfNumbers[i-5] = i;
+	for (let i = 5; i <= 10; i++) {
+		arrayOfNumbers[i - 5] = i;
 	}
 	console.log(arrayOfNumbers);
 	
