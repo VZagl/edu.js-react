@@ -18,13 +18,19 @@ fib(0) => ''
 'use strict';
 
 function fib(_count) {
-	if( typeof(_count)!='number' || !Number.isInteger(_count) || _count<=0 ) return '';
-	if( _count===1 ) return '0';
+	if( typeof(_count) != 'number' || !Number.isInteger(_count) || _count <= 0 ) {
+		return '';
+	}
+	if( _count === 1 ) {
+		return '0';
+	}
 
-	let vArr = [0,1];
+	let vArr = [0, 1];
 	let res = '0 1';
-	for(let i=2; i<_count; i++)	{
-		if(i<_count) res += ' ';
+	for (let i = 2; i < _count; i++) {
+		if(i < _count) {
+			res += ' ';
+		}
 		vArr[2] = vArr[0] + vArr[1];
 		vArr[0] = vArr[1];
 		vArr[1] = vArr[2];
@@ -33,13 +39,13 @@ function fib(_count) {
 	return res;
 }
 
-console.log( '\n1>' + fib(4)   + '<\n>', '0 1 1 2' );
-console.log( '\n2>' + fib(7)   + '<\n>', '0 1 1 2 3 5 8' );
-console.log( '\n3>' + fib('7') + '<\n>', '' );
-console.log( '\n4>' + fib(1)   + '<\n>', '0' );
-console.log( '\n5>' + fib(0)   + '<\n>', '' );
+console.log('\n1>' + fib(4)   + '<\n>', '0 1 1 2');
+console.log('\n2>' + fib(7)   + '<\n>', '0 1 1 2 3 5 8');
+console.log('\n3>' + fib('7') + '<\n>', '');
+console.log('\n4>' + fib(1)   + '<\n>', '0');
+console.log('\n5>' + fib(0)   + '<\n>', '');
 
 console.log();
-for(let i=0; i<10; i++){
-	console.log( `\t${i}\t>${fib(i)}<` );
+for (let i = 0; i < 10; i++) {
+	console.log(`\t${i}\t>${fib(i)}<`);
 }

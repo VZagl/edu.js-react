@@ -1,4 +1,3 @@
-console.log('=> js/script.js');
 'use strict';
 
 console.log('исследую область видимости переменной');
@@ -27,9 +26,11 @@ log(v1);
 log(v1);
 log(`область ${level}: ^`);
 
-function log(_val){
+function log(_val) {
 	let s='';
-	for (let i=0; i<level; i++) s += '\t';
+	for (let i = 0; i < level; i++) {
+		s += '\t';
+	}
 	s += '>';
 	console.log(s, _val);
 }

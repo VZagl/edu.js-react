@@ -1,6 +1,6 @@
-const arr = [5,5, 5];
+const arr = [5, 5, 5];
 
-function f1 () {
+function f1() {
  
 } 
 //-------------------

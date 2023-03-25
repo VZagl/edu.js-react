@@ -43,36 +43,38 @@ getCoupeNumber('Hello')  => "Ошибка. Проверьте правильно
 */
 'use strict';
 
-function calculateVolumeAndArea( lengthRib ){
-	if( typeof(lengthRib)!='number' || lengthRib<0 || !Number.isInteger(lengthRib) ) return 'При вычислении произошла ошибка';
+function calculateVolumeAndArea(lengthRib) {
+	if ( typeof(lengthRib) != 'number' || lengthRib < 0 || !Number.isInteger(lengthRib) ) {
+		return 'При вычислении произошла ошибка';
+	}
 	const v3 = lengthRib*lengthRib*lengthRib;
 	const s2 = lengthRib*lengthRib*6;
 	return `Объем куба: ${v3}, площадь всей поверхности: ${s2}`;
-
 }
 
-console.log( '\n1', calculateVolumeAndArea( 5   ), '\n>', 'Объем куба: 125, площадь всей поверхности: 150'   );
-console.log( '\n2', calculateVolumeAndArea( 15  ), '\n>', 'Объем куба: 3375, площадь всей поверхности: 1350' );
-console.log( '\n3', calculateVolumeAndArea( 15.5), '\n>', 'При вычислении произошла ошибка'                  );
-console.log( '\n4', calculateVolumeAndArea( '15'), '\n>', 'При вычислении произошла ошибка'                  );
-console.log( '\n5', calculateVolumeAndArea( -15 ), '\n>', 'При вычислении произошла ошибка'                  );
+console.log('\n1', calculateVolumeAndArea( 5   ), '\n>', 'Объем куба: 125, площадь всей поверхности: 150');
+console.log('\n2', calculateVolumeAndArea( 15  ), '\n>', 'Объем куба: 3375, площадь всей поверхности: 1350');
+console.log('\n3', calculateVolumeAndArea( 15.5), '\n>', 'При вычислении произошла ошибка');
+console.log('\n4', calculateVolumeAndArea('15'),  '\n>', 'При вычислении произошла ошибка');
+console.log('\n5', calculateVolumeAndArea( -15 ), '\n>', 'При вычислении произошла ошибка');
 
 function getCoupeNumber( numberPlase ){
-	if( typeof(numberPlase)!='number' || numberPlase<0 || !Number.isInteger(numberPlase) )
+	if( typeof(numberPlase) != 'number' || numberPlase < 0 || !Number.isInteger(numberPlase) ) {
 		return 'Ошибка. Проверьте правильность введенного номера места';
-	else if(numberPlase==0 || numberPlase>36) 
+	}	else if(numberPlase == 0 || numberPlase > 36) {
 		return 'Таких мест в вагоне не существует';
-	return Math.ceil(numberPlase/4);
+	}
+	return Math.ceil(numberPlase / 4);
 }
 
-console.log( '\n1', getCoupeNumber(33     ), '\n>', 9                                                        );
-console.log( '\n2', getCoupeNumber(7      ), '\n>', 2                                                        );
-console.log( '\n3', getCoupeNumber(300    ), '\n>', 'Таких мест в вагоне не существует'                      );
-console.log( '\n4', getCoupeNumber(0      ), '\n>', 'Таких мест в вагоне не существует'                      );
-console.log( '\n5', getCoupeNumber(7.7    ), '\n>', 'Ошибка. Проверьте правильность введенного номера места' );
-console.log( '\n6', getCoupeNumber(-10    ), '\n>', 'Ошибка. Проверьте правильность введенного номера места' );
-console.log( '\n7', getCoupeNumber('Hello'), '\n>', 'Ошибка. Проверьте правильность введенного номера места' );
+console.log('\n1', getCoupeNumber(33     ), '\n>', 9);
+console.log('\n2', getCoupeNumber(7      ), '\n>', 2);
+console.log('\n3', getCoupeNumber(300    ), '\n>', 'Таких мест в вагоне не существует');
+console.log('\n4', getCoupeNumber(0      ), '\n>', 'Таких мест в вагоне не существует');
+console.log('\n5', getCoupeNumber(7.7    ), '\n>', 'Ошибка. Проверьте правильность введенного номера места');
+console.log('\n6', getCoupeNumber(-10    ), '\n>', 'Ошибка. Проверьте правильность введенного номера места');
+console.log('\n7', getCoupeNumber('Hello'), '\n>', 'Ошибка. Проверьте правильность введенного номера места');
 console.log();
-for(let i=0; i<=9; i++){
-	console.log( `${i} = ${getCoupeNumber(i)}` );
+for (let i = 0; i <= 9; i++) {
+	console.log(`${i} = ${getCoupeNumber(i)}`);
 }

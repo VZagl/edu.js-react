@@ -1,44 +1,46 @@
 module.exports = {
-	'env': {
-		'browser': true,
-		'es2021': true
+	env: {
+		browser: true,
+		es2021: true,
 	},
-	
-	'extends': [
+
+	extends: [
 		'eslint:recommended',
-		'plugin:react/recommended'
+		'plugin:react/recommended',
+		'airbnb',
 	],
-	
-	'overrides': [
+
+	overrides: [
 	],
-	'parserOptions': {
-		'ecmaVersion': 'latest',
-		'sourceType': 'module'
+	parserOptions: {
+		ecmaVersion: 'latest',
+		sourceType: 'module',
 	},
-	'plugins': [
-		'react'
+	plugins: [
+		'react',
 	],
-	'rules': {
-		'indent': [
+	rules: {
+		allowIndentationTabs: true,
+		indent: [
 			'warn',
-			'tab'
+			'tab',
 		],
 		'linebreak-style': [
 			'error',
-			'windows'
+			'windows',
 		],
-		'quotes': [
+		quotes: [
 			'warn',
-			'single'
+			'single',
 		],
-		'semi': [
+		semi: [
 			'error',
-			'always'
+			'always',
 		],
 		'no-unused-vars': [
-			'warn'
-			//, { 'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false }
+			'warn',
+			// , { 'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false }
 		],
-		'no-inner-declarations' : ['warn']
-	}
+		'no-inner-declarations': ['warn'],
+	},
 };

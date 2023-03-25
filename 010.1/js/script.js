@@ -1,4 +1,3 @@
-console.log('=> js/script.js');
 'use strict';
 
 let userName = 'John';

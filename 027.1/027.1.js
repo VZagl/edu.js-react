@@ -12,7 +12,7 @@ P.S. возвращать - это использовать ключевое с�
 P.S.S. Это классическая функция-модификатор, которых мы дальше по курсу будем создавать еще много в разных видах.
 */
 
-function sayHello(name){
+function sayHello(name) {
 	return `Привет, ${name}!`;
 }
 //console.log( sayHello('Антон') );
@@ -24,9 +24,11 @@ function sayHello(name){
 Пример: вызов функции returnNeighboringNumbers(5) возвращает массив в виде [4, 5, 6].
 */
 
-function returnNeighboringNumbers( num ){
+function returnNeighboringNumbers( num ) {
 	const res = [];
-	for( let i=0; i<3; i++) res[i] = num - 1 + i;
+	for( let i = 0; i < 3; i++) {
+		res[i] = num - 1 + i;
+	}
 	return res;
 }
 //console.log( returnNeighboringNumbers(5) );
@@ -59,18 +61,22 @@ function returnNeighboringNumbers( num ){
 по простой формуле умножения. Если первый аргумент 5, а второй 3, то число повторяется 3 раза, 
 каждый раз увеличиваясь на само себя. 
 */
-function getMathResult( arg1, arg2){
-	if( typeof(arg2) != 'number' || arg2<=0 ) return arg1;
+function getMathResult( arg1, arg2) {
+	if( typeof(arg2) != 'number' || arg2 <= 0) {
+		return arg1;
+	}
 	let res = '';
-	for( let i=1; i<=arg2; i++){
-		res += arg1*i;
-		if(i<arg2) res += '---';
+	for (let i = 1; i <= arg2; i++) {
+		res += arg1 * i;
+		if(i < arg2) {
+			res += '---';
+		}
 	}
 	return res;
 }
-//console.log( '1', getMathResult(5, 3)   , '\r> 5---10---15');
-//console.log( '2', getMathResult(3, 10)  , '\r> 3---6---9---12---15---18---21---24---27---30');
-//console.log( '3', getMathResult(10, 5)  , '\r> 10---20---30---40---50');
-//console.log( '4', getMathResult(10, '5'), '\r> 10');
-//console.log( '5', getMathResult(10, 0)  , '\r> 10');
-//console.log( '6', getMathResult(20, -5) , '\r> 20');
+console.log( '\n1', getMathResult(5, 3)   , '\r> 5---10---15');
+console.log( '\n2', getMathResult(3, 10)  , '\r> 3---6---9---12---15---18---21---24---27---30');
+console.log( '\n3', getMathResult(10, 5)  , '\r> 10---20---30---40---50');
+console.log( '\n4', getMathResult(10, '5'), '\r> 10');
+console.log( '\n5', getMathResult(10, 0)  , '\r> 10');
+console.log( '\n6', getMathResult(20, -5) , '\r> 20');

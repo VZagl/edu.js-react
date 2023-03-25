@@ -4,7 +4,7 @@ function firstTask() {
 	const arr = [3, 5, 8, 16, 20, 23, 50];
 	const result = [];
 
-	for( let i=0; i<arr.length;i++){
+	for (let i = 0; i < arr.length; i++) {
 		result[i] = arr[i];
 	}
 	console.log(arr);
@@ -20,7 +20,7 @@ function secondTask() {
 	const data = [5, 10, 'Shopping', 20, 'Homework'];
 
 	console.log(data);
-	for (let i=0; i<data.length; i++) {
+	for (let i = 0; i < data.length; i++) {
 		if ( typeof(data[i]) === 'string') {
 			data[i] += ' - done';
 		} else {
@@ -39,7 +39,7 @@ function thirdTask() {
 	const data = [5, 10, 'Shopping', 20, 'Homework'];
 	const result = [];
 
-	for (let i=0; i<data.length; i++) {
+	for (let i = 0; i < data.length; i++) {
 		result[i] = data[data.length-i-1];
 	}
 	console.log(data);
