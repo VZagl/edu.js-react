@@ -16,23 +16,21 @@
 
 // Код возьмите из предыдущего домашнего задания
 
-let numberOfFilms;
-
-function start() {
-	do {
-		numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
-	} while ( numberOfFilms == null || numberOfFilms.length === 0 || isNaN(+numberOfFilms) );
-}
-
-start();
-
 const personalMovieDB = {
-	count: +numberOfFilms,
+	count: 0,
 	movies: {},
 	actors: {},
 	genres: [],
 	privat: false,
 
+	start: function () {
+		let numberOfFilms;
+		do {
+			numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+		} while ( numberOfFilms == null || numberOfFilms.trim().length === 0 || isNaN(+numberOfFilms) );
+		this.count = numberOfFilms;
+	},
+	
 	rememberMyFilms: function () {
 		const countFilms = 2;
 		for (let i = 0; i < countFilms; i++) {
@@ -62,7 +60,7 @@ const personalMovieDB = {
 
 	showMyDB: function (hidden) {
 		if (hidden === false) {
-			console.log('personalMovieDB= \n', this);
+			console.log(this);
 		}
 	},
 	
@@ -80,6 +78,7 @@ const personalMovieDB = {
 	toggleVisibleMyDB: function () { this.privat = !this.privat; }
 };
 
+personalMovieDB.start();
 personalMovieDB.rememberMyFilms();
 personalMovieDB.detectPersonalLevel();
 console.log('\tshowMyDB 1, privat=', personalMovieDB.privat);
