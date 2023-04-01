@@ -73,6 +73,17 @@
 	console.log(`arr1[1] === arr2[1] `, arr1[1] === arr2[1]);
 }
 
+{ console.log('\n\t'+'клонирование 2'); // способ из урока 036
+	const arr1 = [1, {a:2}];
+	// тоже не клонирует а копитует, причём объекты копирует по ссылке
+	let arr2 = Object.create(Object.getPrototypeOf(arr1), Object.getOwnPropertyDescriptors(arr1));
+	console.log('1', `1=`, arr1, '\t2=', arr2);
+	arr2[1].a += 3;
+	console.log('2', `1=`, arr1, '\t2=', arr2);
+	console.log(`arr1 === arr2 `, arr1 === arr2);
+	console.log(`arr1[1] === arr2[1] `, arr1[1] === arr2[1]);
+}
+
 { console.log('\n\t'+'Spread оператор');
 	// "..." перед  (доступной для итерации) переменной разложит на отдельные элементы
 	const v = ['v1', 'v2'],
