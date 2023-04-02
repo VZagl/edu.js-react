@@ -35,16 +35,13 @@ standardizeStrings(favoriteCities)  выведет в консоль
 В том числе и с разными буквами :) Поэтому нам нужно привести строки в один формат для правильной работы.
 */
 function standardizeStrings(_favoriteCities) {
-  let vStr = '';
   _favoriteCities.map( (i) => { 
-      if (vStr.length > 0) vStr += '\n';
-      vStr += i.toLocaleLowerCase();
+      console.log( i.toLocaleLowerCase() );
     }
   );
-  return vStr;
 }
 
 const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
 console.log( '\n\t(2)');
-console.log( '1>', standardizeStrings(favoriteCities) );
-console.log( '2>', 'lisbon\nrome\nmilan\ndublin' );
+standardizeStrings(favoriteCities);
+console.log( '2>\n', 'lisbon\nrome\nmilan\ndublin' );

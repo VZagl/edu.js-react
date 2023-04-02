@@ -54,15 +54,15 @@ console.log( '2>', 'gnirts egnarts emos si sihT' );
 - Данные для первого аргумента должны приходить сразу из двух банков, причем сначала baseCurrencies, 
   потом additionalCurrencies по порядку
 */
-function availableCurr(_curYes, _curNo) {
-  if (_curYes.length === 0) return 'Нет доступных валют';
+function availableCurr(_arr, _missingCurr) {
+  if (_arr.length === 0) return 'Нет доступных валют';
   let vArr;
-  if (_curNo === undefined ) {
-    vArr = _curYes;
+  if (_missingCurr === undefined ) {
+    vArr = _arr;
   } else {
-    vArr = _curYes.filter(i => i !== _curNo);
+    vArr = _arr.filter(i => i !== _missingCurr);
   }
-  return 'Доступные валюты:\n' + vArr.join('\n');
+  return 'Доступные валюты:\n' + vArr.join('\n') + '\n';
 }
 
 const baseCurrencies = ['USD', 'EUR'];

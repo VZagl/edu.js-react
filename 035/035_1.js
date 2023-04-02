@@ -4,12 +4,12 @@ const personalPlanPeter = {
   name: "Peter",
   age: "29",
   skills: {
-    languages: ['ru', 'eng'],
-    programmingLangs: {
-      js: '20%',
-      php: '10%'
-    },
-    exp: '1 month'
+      languages: ['ru', 'eng'],
+      programmingLangs: {
+          js: '20%',
+          php: '10%'
+      },
+      exp: '1 month'
   }
 };
 
@@ -51,15 +51,13 @@ function showProgrammingLangs(_plan) {
   let vStr = '';
   const vSkills = _plan.skills;
   for (let i in vSkills.programmingLangs) {
-    if (vStr.length > 0) vStr += '\n';
-    vStr += `Язык ${i} изучен на ${vSkills.programmingLangs[i]}`;
+    vStr += `Язык ${i} изучен на ${vSkills.programmingLangs[i]}\n`;
   }
   return vStr;
 }
 console.log( '\n\t(2)');
 console.log( '1>', showProgrammingLangs(personalPlanPeter) );
-console.log( '2>', "Язык js изучен на 20%\nЯзык php изучен на 10%");
-
+console.log( '2>', "Язык js изучен на 20%\nЯзык php изучен на 10%\n");
 /*
 3) Создайте метод showAgeAndLangs внутри объекта personalPlanPeter. При его вызове метод будет 
 принимать в себя объект и возвращать строку в нужном виде.

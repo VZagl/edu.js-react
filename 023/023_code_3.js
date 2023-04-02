@@ -53,7 +53,7 @@ function fourthTask() {
 
 function fifthTask() {
 
-	const arrayOfNumbers = [];
+	//const arrayOfNumbers = [];
 	for (let i = 5; i <= 10; i++) {
 		arrayOfNumbers[i - 5] = i;
 	}

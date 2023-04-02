@@ -22,29 +22,29 @@
 
 const shoppingMallData = {
   shops: [
-    {
-      width: 10,
-      length: 5
-    },
-    {
-      width: 15,
-      length: 7
-    },
-    {
-      width: 20,
-      length: 5
-    },
-    {
-      width: 8,
-      length: 10
-    }
+      {
+          width: 10,
+          length: 5
+      },
+      {
+          width: 15,
+          length: 7
+      },
+      {
+          width: 20,
+          length: 5
+      },
+      {
+          width: 8,
+          length: 10
+      }
   ],
   height: 5,
   moneyPer1m3: 30,
   budget: 50000
 }
 
-isBudgetEnough(shoppingMallData);
+console.log( isBudgetEnough(shoppingMallData) );
 
 function isBudgetEnough (data) {
   let s2 = 0;
@@ -53,11 +53,10 @@ function isBudgetEnough (data) {
   } );
   let v3 = s2 * data.height;
   let totalPayment = v3*data.moneyPer1m3;
-  // console.log(`s2= ${s2}, v3= ${v3}, totalPayment= ${totalPayment}, data.budget= ${data.budget}`);
   if (totalPayment > data.budget ) {
-    console.log('Бюджета недостаточно');
+    return 'Бюджета недостаточно';
   } else {
-    console.log('Бюджета достаточно');
+    return 'Бюджета достаточно';
   }
 }
 

@@ -10,11 +10,12 @@
 
 (Подсказка: в конце фигуры есть перенос строки \n, который тоже учитывается в тестах. 
 */
-const lines = 6;
+const lines = 5;
 let result = '';
+// Проверяется именно переменная result, формируйте строку в ней
 
-for (let i = 0; i < lines; i++) {
-	for (let j = 1; j < lines-i; j++) {
+for (let i = 0; i <= lines; i++) {
+	for (let j = 0; j < lines-i; j++) {
 		result += ' ';
 	}
 	for (let j = 0; j < i * 2 + 1; j++) {
