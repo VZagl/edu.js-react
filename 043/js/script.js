@@ -1,0 +1,102 @@
+'use strict';
+
+const box = document.getElementById('box');
+const btns = document.getElementsByTagName('button'); 
+const circles = document.getElementsByClassName('circle');
+const wrapper = document.querySelector('.wrapper');
+// неочевидный момент
+// для поиска элементов, которые находятся внутри определённого элемента
+const hearts = wrapper.querySelectorAll('.heart');
+const oneHeart = wrapper.querySelector('.heart');
+{
+	// выведет в браузере объект, в котором можно посмотреть все свойства, методы, стили
+	console.dir(box);
+	/* все свойства, которые записаны в объекте "style" являются inline.
+		inline - когда стиль прописан не в отдельном файле/блоке, а непосредственно в коде.
+		то есть не
+			<div class="center"></div>
+		a
+			<div style="text-align: center;"></div>
+		Плюс к сказанному, Inline стиль имеет самый высокий приоритет, игнорируя CSS правила, 
+		распространяющиеся на родителя и одноименные элементы/классы. 
+		Считается порочной практикой использовать инлайны в продуктиве, т.к. это усложняет поддержку проекта.
+	*/
+	console.dir(box.style);
+
+	box.style.backgroundColor = 'green';
+	box.style.width = '500px';
+	// заменяет все inline стили элемента
+	box.style.cssText = 'background-color: blue; height: 100px';
+
+	btns[1].style.borderRadius = '100%';
+
+	// перебрать найденные элементы
+	// вариант 1
+	// for (let i = 0; hearts.length; i++) {
+	// 	hearts[i].style.backgroundColor = 'blue';
+	// }
+	// вариант 2
+	hearts.forEach( (item) => {
+		item.style.backgroundColor = 'blue';
+	});
+}
+
+{
+	// создаёт новый элемент 'div' внутри скрипта.
+	// на странице этого элемента пока нет
+	const vDiv = document.createElement('div');
+	const text = document.createTextNode('text note 1');
+	
+	vDiv.id = 'div_1';
+	vDiv.classList.add('black');
+	{ // добавить элемент
+		/*	!!! элемент добавляется ОДИН раз.
+				в этом примере только последнее добавление сработает
+		*/
+		// добавить в конец элемент
+		document.body.append(vDiv);
+		document.querySelector('.wrapper').append(vDiv);
+		
+		// вставить в начало элемент
+		wrapper.prepend(vDiv);
+		// вставить элемент перед элементом "hearts[0]"
+		hearts[0].before(vDiv);
+		// вставить элемент после элемента "hearts[1]"
+		hearts[1].after(vDiv);
+	}
+/*
+	{// удалить элемент
+		vDiv.remove();
+		circles[1].remove();
+	}
+
+	{// заменить элемент другим элементом
+		// если элемент на который заменяем есть на странице, то он переносится
+		hearts[2].replaceWith(circles[0]);
+	}
+
+	{// устаревшие методы
+		// добавить в конец
+		wrapper.appendChild(vDiv);
+		// вставить перед
+		// wrapper.insertBefore(vDiv, hearts[1]);
+		wrapper.insertBefore(vDiv, circles[0]);
+		// удалить
+		wrapper.removeChild(hearts[1]);
+		// заменить hearts[0] на circles[0]
+		wrapper.replaceChild(circles[0], hearts[0]);
+	}*/
+
+	{// заменить содержимое блока на HTML
+		vDiv.innerHTML = '<h1>Hello, world!</h1>';
+		// заменить содержимое блока на текст. HTML будет преобразован в текстовый вид.
+			vDiv.textContent = '<h1>Hello, world!</h1>';
+		/*	вставить фрагмент HTML в определённое место относительно элемента vDiv
+			afterbegin - после <div>
+			beforebegin - перед <div>
+			afterend - после </div>
+			beforeend - перед </div>
+		*/
+		vDiv.insertAdjacentHTML('afterend', '<h2>Hello2</h2>');
+	}
+}
