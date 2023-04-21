@@ -44,11 +44,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	{// timer
-		const deadline = '2023-04-22';
+		const deadline = '2022-04-22';
 		setClock('.timer', deadline);
 
 		function getTimeRemaining(_endtime) {
-			const vT = Date.parse(_endtime) - Date.now();
+			let vT = Date.parse(_endtime) - Date.now();
+			if (vT < 0) vT = 0;
 
 			const vMsecInSec    = 1000;
 			const vMsecInMinute = vMsecInSec    * 60;
@@ -92,7 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 			//
 			function setZero (_num) {
-				if (_num <= 0 || _num >= 10) return `${_num}`;
+				if (_num < 0 || _num >= 10) return `${_num}`;
 				return `0${_num}`;
 			}
 			//
