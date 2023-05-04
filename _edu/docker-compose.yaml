@@ -1,0 +1,17 @@
+version: "3.6"
+services:
+  php-apache :
+    image: php:8.1.0-apache
+    container_name: local.edu2
+#    user: "${UID}:${GID}"
+#    build :
+#      context: ./php/docker/oracle-xe-samples-php-apache
+#      dockerfile: Dockerfile
+#    env_file:
+#      - ./.env
+    ports:
+      - "2080:80"
+    volumes:
+      - .:/var/www
+#      - ./php/docker/oracle-xe-samples-php-apache/volume/bin:/app/bin
+#      - ./php/docker/oracle-xe-samples-php-apache/volume/configs/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
