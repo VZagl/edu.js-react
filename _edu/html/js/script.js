@@ -2,7 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
 
-//#region tabs
+//#region Tabs
 	const tabs = document.querySelectorAll('.tabheader__item');
 	const tabsContent = document.querySelectorAll('.tabcontent');
 	const tabsParent = document.querySelector('.tabheader__items');
@@ -42,9 +42,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	// tabsContent[_i].style.display = 'block';
 		tabs[_i].classList.add('tabheader__item_active');
 	}
-//#endregion
+//#endregion Tabs
 
-//#region timer
+//#region Timer
 	const deadline = '2022-04-22';
 	setClock('.timer', deadline);
 
@@ -100,9 +100,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		//
 	}
 	//
-//#endregion
+//#endregion Timer
 
-//#region modal
+//#region Modal
 	let vModalShowed = false;
 	const vModalElement = document.querySelector('.modal');
 	
@@ -224,7 +224,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		'.menu .container',
 		'menu__item'
 	).render();
-//#endregion
+//#endregion Modal
 
 //#region Forms
 	const forms = document.querySelectorAll('form');
@@ -239,37 +239,38 @@ window.addEventListener('DOMContentLoaded', () => {
 	function postData(_form) {
 		_form.addEventListener('submit', (_e) => {
 			_e.preventDefault();
+			
+			//#region statusMessage
+				const statusMessage = document.createElement('img');
+				statusMessage.src = messages.loading;
+				statusMessage.style.cssText = `
+					display: block;
+					margin: 0 auto;
+				`;
+				_form.insertAdjacentElement('afterend', statusMessage);
+			//#endregion statusMessage
 
-			const statusMessage = document.createElement('img');
-			statusMessage.src = messages.loading;
-			statusMessage.style.cssText = `
-				display: block;
-				margin: 0 auto;
-			`;
-			_form.insertAdjacentElement('afterend', statusMessage);
-
-			const req = new XMLHttpRequest();
-			req.addEventListener('load', ()=> {
-				if (req.status === 200) {
-					console.log(req.response);
-					showThanksModal(messages.succes);
-					_form.reset();
-				} else {
-					showThanksModal(messages.failure);
-				}
-				statusMessage.remove();
-			});
-
-			req.open('POST', 'server.php');
-			// когда отправляеются преобразованные данные, заголовок нужно заполнять
-			req.setRequestHeader('Content-type', 'application/json');
 			const obj = {};
 			const formData = new FormData(_form);
 			formData.forEach( function(value, key) {
 				obj[key] = value;
 			});
-			const json = JSON.stringify(obj);
-			req.send(json);
+
+			fetch('server.php', {
+				method: 'POST',
+				headers: { 'Content-type': 'application/json' },
+				body: JSON.stringify(obj)
+			}).then( _data => {
+				return _data.text();
+			}).then( _data => {
+				console.log(_data);
+				showThanksModal(messages.succes);
+				_form.reset();
+			}).catch( () => {
+				showThanksModal(messages.failure);
+			}).finally( () => {
+				statusMessage.remove();
+			});
 
 		});
 	}
@@ -295,6 +296,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			doModalClose();
 		}, 4000);
 	}
-//#endregion
+//#endregion Forms
 
 });
