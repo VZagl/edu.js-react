@@ -7,7 +7,7 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'airbnb',
+		// 'airbnb',
 	],
 
 	overrides: [
@@ -20,7 +20,7 @@ module.exports = {
 		'react',
 	],
 	rules: {
-		allowIndentationTabs: true,
+		// allowIndentationTabs: 1, // 0 = off, 1 = warn, 2 = error
 		indent: [
 			'warn',
 			'tab',
