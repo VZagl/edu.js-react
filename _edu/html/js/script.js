@@ -2,7 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	// tabs
+//#region tabs
 	const tabs = document.querySelectorAll('.tabheader__item');
 	const tabsContent = document.querySelectorAll('.tabcontent');
 	const tabsParent = document.querySelector('.tabheader__items');
@@ -42,9 +42,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	// tabsContent[_i].style.display = 'block';
 		tabs[_i].classList.add('tabheader__item_active');
 	}
+//#endregion
 
-
-// timer
+//#region timer
 	const deadline = '2022-04-22';
 	setClock('.timer', deadline);
 
@@ -100,9 +100,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		//
 	}
 	//
-	
+//#endregion
 
-	// modal
+//#region modal
 	let vModalShowed = false;
 	const vModalElement = document.querySelector('.modal');
 	
@@ -224,9 +224,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		'.menu .container',
 		'menu__item'
 	).render();
-	//
+//#endregion
 
-	// Forms
+//#region Forms
 	const forms = document.querySelectorAll('form');
 	const messages = {
 		loading: 'img/form/spinner.svg',
@@ -295,5 +295,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			doModalClose();
 		}, 4000);
 	}
+//#endregion
 
 });
