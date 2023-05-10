@@ -300,6 +300,60 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 	//#endregion Forms
 
+	//#region Slider1
+	/*
+	initSliders();
+	
+	function initSliders() {
+		const vSlidersData = {
+			current: 1,
+			listSliders: [],
+			elements: {}
+		};
+		const vOfferSlider = document.querySelector('div.offer__slider');
+		const vSlider_Counter = vOfferSlider.querySelector('.offer__slider-counter');
+		const vSlider_BtnPrev = vSlider_Counter.querySelector('.offer__slider-prev');
+		const vSlider_BtnNext = vSlider_Counter.querySelector('.offer__slider-next');
+		vSlidersData.elements.counterCurrent = vSlider_Counter.querySelector('#current');
+		vSlidersData.elements.counterTotal = vSlider_Counter.querySelector('#total');
+		vSlidersData.listSliders = vOfferSlider.querySelectorAll('.offer__slide');
+		vSlidersData.elements.counterTotal.textContent = `${vSlidersData.listSliders.length < 10 ? '0' : ''}${vSlidersData.listSliders.length}`;
+
+		vSlidersData.listSliders.forEach( v => doHide_Element(v) );
+		doSlider_Show(1);
+
+		vSlider_BtnPrev.addEventListener('click', () => doSlider_Plus(-1) );
+		vSlider_BtnNext.addEventListener('click', () => doSlider_Plus( 1) );
+
+		function doSlider_Plus(_num) {
+			doSlider_Show(vSlidersData.current + _num);
+		}
+
+		function doSlider_Show(_number) {
+			doHide_Element( vSlidersData.listSliders[vSlidersData.current - 1] );
+			vSlidersData.current = _number;
+			if (_number < 1) {
+				vSlidersData.current = vSlidersData.listSliders.length;
+			}
+			if (_number > vSlidersData.listSliders.length) {
+				vSlidersData.current = 1;
+			}
+			doShow_Element( vSlidersData.listSliders[vSlidersData.current - 1] );
+			vSlidersData.elements.counterCurrent.textContent = `${vSlidersData.current < 10 ? '0' : ''}${vSlidersData.current}`;
+		}
+
+		function doHide_Element(_element) {
+			_element.classList.add('hide');
+		}
+
+		function doShow_Element(_element) {
+			_element.classList.remove('hide');
+		}
+
+	}
+	*/
+	//#endregion Slider1
+	
 	//#region Slider2
 	initSliders();
 	
