@@ -54,7 +54,7 @@ function forms() {
 	function showThanksModal (_message) {
 		const prevModalSelect = document.querySelector('.modal__dialog');
 		prevModalSelect.classList.add('hide');
-		doModalOpen();
+		globalObj.modal.doModalOpen();
 
 		const thanksModal = document.createElement('div');
 		thanksModal.classList.add('modal__dialog');
@@ -68,10 +68,10 @@ function forms() {
 		setTimeout( () => {
 			thanksModal.remove();
 			prevModalSelect.classList.remove('hide');
-			doModalClose();
+			globalObj.modal.doModalClose();
 		}, 4000);
 	}
 
 }
 
-module.exports = forms;
+export default forms;

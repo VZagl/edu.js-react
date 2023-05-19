@@ -35,27 +35,26 @@ function cards() {
 		}
 	}
 
-	/*
-		async function getResource(_url) {
-			const res = await fetch(_url);
 	
-			if( !res.ok ) {
-				throw new Error(`Could not fetch ${_url}, status: ${res.status}`);
-			}
-			
-			return await res.json();
+	async function getResource(_url) {
+		const res = await fetch(_url);
+	
+		if( !res.ok ) {
+			throw new Error(`Could not fetch ${_url}, status: ${res.status}`);
 		}
-	
+			
+		return await res.json();
+	}
 		
-		getResource('http://localhost:3000/menu')
-			.then(_data => {
-				//                деструктуризация объекта
-				_data.forEach(  ({img, altimg, title, descr, price}) => {
-					new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
-				});
+	getResource('http://localhost:3000/menu')
+		.then(_data => {
+			//                деструктуризация объекта
+			_data.forEach(  ({img, altimg, title, descr, price}) => {
+				new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
 			});
-	*/
-
+		});
+	
+/*
 	axios.get('http://localhost:3000/menu')
 		.then( _data => {
 			_data.data.forEach(  ({img, altimg, title, descr, price}) => {
@@ -63,9 +62,9 @@ function cards() {
 			});
 		})
 		.catch( _error => {
-			console.log(_error);
+			console.log( 'ERROR:', _error);
 		});
-
+*/
 }
 
-module.exports = cards;
+export default cards;

@@ -1,7 +1,9 @@
-
 'use strict';
 
 let path = require('path');
+
+//console.log('>>> path =', path);
+console.log('>>> __dirname =', __dirname);
 
 module.exports = {
 	mode: 'development',
