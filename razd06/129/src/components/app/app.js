@@ -10,8 +10,8 @@ function App() {
 
 	const data = [
 		{id: 1, name: 'John Smith'      , salary:  800, increase: false },
-		{id: 2, name: 'Ann Smith'       , salary: 3000, increase: true , key:'item_2_key' },
-		{id: 3, name: 'Ivan Petrichenko', salary: 5000, increase: false },
+		{id: 2, name: 'Ann Smith'       , salary: 3000, increase: true  },
+		{id: 3, name: 'Ivan Petrichenko', salary: 5000, increase: false, key:'3_key' },
 	];
 
 	return (
