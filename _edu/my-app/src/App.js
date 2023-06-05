@@ -49,7 +49,6 @@ class WhoAmI extends React.Component {
 		const {name, surname, link} = this.props;
 		return(
 			<div>
-				{/* <h1>My name is {name.firstName}, surname - {surname}</h1> */}
 				<button onClick={this.nextYear}>{this.state.text}</button>
 				<h1>My name is { name }, surname - {surname}, age - {this.state.years}</h1>
 				<a href={link}>My profile</a>
