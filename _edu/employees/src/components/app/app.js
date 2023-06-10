@@ -53,11 +53,11 @@ class App extends React.Component {
 		}));
 	};
 	*/
-	onToggleProp = (id, prop) => {
-		console.log('onToggleProp', id, prop);
+	onToggleProp = (id, propName) => {
+		console.log('onToggleProp', id, propName);
 		this.setState( ({data}) =>({
 			data: data.map( item => {
-				if (item.id === id) return {...item, [prop]: !item[prop]};
+				if (item.id === id) return {...item, [propName]: !item[propName]};
 				return item;
 			})
 		}));

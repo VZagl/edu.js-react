@@ -60,7 +60,7 @@ class WhoAmI extends React.Component {
 		const {position, years, text} = this.state;
 
 		return (
-			<div>
+			<React.Fragment key={name}>
 				<button onClick={this.nextYear}>{text}</button>
 				<h1>
 					My name is { name }, 
@@ -73,7 +73,7 @@ class WhoAmI extends React.Component {
 					<span>Введите должность</span>
 					<input type="text" onChange={ (e) => this.commitInputChanged(e, 'some color') } />
 				</form>
-			</div>
+			</React.Fragment>
 		);
 	};
 }
