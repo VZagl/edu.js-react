@@ -1,4 +1,4 @@
-class MarvelService {
+class MarvellService {
 	_api = {
 		baseUrl: 'https://gateway.marvel.com:443/v1/public/',
 		// eslint-disable-next-line no-undef
@@ -26,12 +26,13 @@ class MarvelService {
 		const res = await this.getResource(
 			`${this._api.baseUrl}characters/${_id}?apikey=${this._api.apikey}`
 		);
-		console.log(`getCharacter(${_id})`, res.data.results[0].description);
+		// console.log(`getCharacter(${_id})`, res.data.results[0].description);
 		return this._transformCharacter(res.data.results[0]);
 	};
 
 	// название метода начинается с "_" - это недокументированное указание другим программистам "не меняй"
 	_transformCharacter = (_char) => ({
+		id: _char.id,
 		name: _char.name,
 		description: !_char.description
 			? 'Описание отсутствует.'
@@ -44,4 +45,4 @@ class MarvelService {
 	});
 }
 
-export default MarvelService;
+export default MarvellService;
