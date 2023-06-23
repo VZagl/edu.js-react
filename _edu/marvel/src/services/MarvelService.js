@@ -1,9 +1,8 @@
-import _api_key from '../components/privates/privates.js';
-
 class MarvelService {
 	_api = {
 		baseUrl: 'https://gateway.marvel.com:443/v1/public/',
-		apikey: _api_key.marwell.public,
+		// eslint-disable-next-line no-undef
+		apikey: process.env.REACT_APP_MARWELL_API_KEY,
 	};
 
 	getResource = async (_url) => {
