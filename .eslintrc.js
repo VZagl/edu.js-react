@@ -17,6 +17,7 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['react', 'prettier'],
+
 	rules: {
 		// 'prettier/prettier': 'error', // Обязательно!! Подсвечивает ошибки из Prettier.
 		'react/prop-types': 0, // Отключаем правило проверки передаваемых типов.
