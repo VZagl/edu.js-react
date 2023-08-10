@@ -1,0 +1,8 @@
+алгебра логики
+https://www.youtube.com/watch?v=ZgSx3yH7sJI
+
+Приоритет операторов
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+задачи
+https://docs.google.com/document/d/1RDxwMg7pSI9QzhYU0sY59kyspI71r-3_hzJoSbHRk0I/edit

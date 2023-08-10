@@ -1,0 +1,8 @@
+BigInt 
+https://medium.com/@hydrock/bigint-новый-тип-данных-в-js-dd5c29446570
+
+Тип данных Symbol
+https://learn.javascript.ru/symbol
+
+Типы данных JS
+https://drive.google.com/file/d/13TdbVsWl7r_GX6TZJcd60HrtvISkMZ7m/view

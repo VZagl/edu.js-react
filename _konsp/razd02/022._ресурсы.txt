@@ -1,0 +1,5 @@
+условия и циклы
+https://drive.google.com/file/d/1oM1HzpbJTwBi5pdgeHjS3j2FW_FqKy1u/view
+
+Циклы while и for
+https://learn.javascript.ru/while-for

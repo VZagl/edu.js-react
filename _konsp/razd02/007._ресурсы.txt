@@ -1,0 +1,8 @@
+CSS3-селекторы
+https://learn.javascript.ru/css-selectors
+
+Введение в HTML
+https://developer.mozilla.org/ru/docs/Learn/HTML/Introduction_to_HTML
+
+Введение в CSS
+https://developer.mozilla.org/ru/docs/Learn/CSS/First_steps

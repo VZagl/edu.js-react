@@ -1,0 +1,17 @@
+Git How To — это интерактивный тур, который познакомит вас с основами Git. 
+https://githowto.com/ru
+
+github
+https://github.com
+
+документация по Git
+https://git-scm.com/book/ru/v2/Введение-О-системе-контроля-версий
+
+Git
+https://git-scm.com
+
+интерактивное обучение
+https://learngitbranching.js.org/?locale=ru_RU
+
+список команд терминала
+https://www.codecademy.com/article/command-line-commands

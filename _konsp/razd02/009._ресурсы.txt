@@ -1,0 +1,8 @@
+Strict mode
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+
+проверить поддержку возможностей браузерами
+https://caniuse.com
+
+code style
+https://drive.google.com/file/d/1B8iEjwnWyWasNPhGmGFy43dyQ-5griVN/view

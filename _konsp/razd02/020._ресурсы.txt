@@ -1,0 +1,2 @@
+Принятие решений в вашем коде — условные конструкции
+https://developer.mozilla.org/ru/docs/Learn/JavaScript/Building_blocks/conditionals

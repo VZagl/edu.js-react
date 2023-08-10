@@ -1,0 +1,2 @@
+Шаблонные строки
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Template_literals
