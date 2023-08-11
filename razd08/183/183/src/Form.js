@@ -63,9 +63,14 @@ const Form = () => {
 				id='name'
 				name='name'
 				type='text'
+				/*
 				value={formik.values.name}
 				onBlur={formik.handleBlur}
 				onChange={formik.handleChange}
+
+				вместо выше описанного способа описания проп-сов можно использовать хук "getFieldProps"
+				*/
+				{...formik.getFieldProps('name')}
 			/>
 			{formik.errors.name && formik.touched.name && (
 				<div className='error'>{formik.errors.name}</div>

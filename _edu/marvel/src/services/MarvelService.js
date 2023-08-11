@@ -1,6 +1,6 @@
 import { useHttp } from '../hooks/http.hook';
 
-const useMarvellService = () => {
+const useMarvelService = () => {
 	const _api = {
 		baseUrl: 'https://gateway.marvel.com:443/v1/public/',
 		// eslint-disable-next-line no-undef
@@ -24,6 +24,15 @@ const useMarvellService = () => {
 		);
 		// console.log(`getCharacter(${_id})`, res.data.results[0].description);
 		return _transformCharacter(res.data.results[0]);
+	};
+
+	const getCharacterByName = async (_name) => {
+		// console.log(`getCharacterByName(${_name})`);
+		const res = await request(
+			`${_api.baseUrl}characters?name=${_name}&apikey=${_api.apikey}`
+		);
+		// console.log(`getCharacterByName(${_name})`, res.data.results);
+		return res.data.results.map(_transformCharacter);
 	};
 
 	// название метода начинается с "_" - это недокументированное указание другим программистам "не меняй"
@@ -80,9 +89,10 @@ const useMarvellService = () => {
 		clearError,
 		getAllCharacters,
 		getCharacter,
+		getCharacterByName,
 		getAllComics,
 		getComic,
 	};
 };
 
-export default useMarvellService;
+export default useMarvelService;
