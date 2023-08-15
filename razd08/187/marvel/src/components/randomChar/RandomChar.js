@@ -43,7 +43,11 @@ const RandomChar = () => {
 					Do you want to get to know him better?
 				</p>
 				<p className='randomchar__title'>Or choose another one</p>
-				<button className='button button__main' onClick={updateChar}>
+				<button
+					className='button button__main'
+					onClick={updateChar}
+					disabled={fsmProcess === 'loading'}
+				>
 					<div className='inner'>try it</div>
 				</button>
 				<img src={mjolnir} alt='mjolnir' className='randomchar__decoration' />

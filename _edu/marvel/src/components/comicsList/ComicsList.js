@@ -30,7 +30,7 @@ const ComicsList = () => {
 	const [ended, setEnded] = useState(false);
 	const [newItemLoading, setNewItemLoading] = useState(false);
 
-	const { loading, getAllComics, fsmProcess, setProcess } = useMarvelService();
+	const { getAllComics, fsmProcess, setProcess } = useMarvelService();
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => onRequest(true), []);
@@ -87,7 +87,7 @@ const ComicsList = () => {
 			<button
 				className='button button__main button__long'
 				onClick={() => onRequest()}
-				disabled={loading}
+				disabled={fsmProcess === 'loading'}
 				style={{ display: ended ? 'none' : 'block' }}
 			>
 				<div className='inner'>load more</div>

@@ -33,8 +33,7 @@ const CharList = (props) => {
 	const [charCurrent, setCharCurrent] = useState(null);
 	const [newItemLoading, setNewItemLoading] = useState(false);
 
-	const { loading, getAllCharacters, fsmProcess, setProcess } =
-		useMarvelService();
+	const { getAllCharacters, fsmProcess, setProcess } = useMarvelService();
 	// const itemRefs = useRef([]);
 	const itemRefs = useRef(new Object(null));
 
@@ -86,7 +85,7 @@ const CharList = (props) => {
 					key={_item.id}
 					// nodeRef={nodeRef}
 					in={true}
-					timeout={500}
+					timeout={2500}
 					// classNames='page'
 					// unmountOnExit
 					classNames='char__item'
@@ -132,10 +131,11 @@ const CharList = (props) => {
 				<title>Characters list</title>
 			</Helmet>
 			{setContent(fsmProcess, () => renderItems(charList), newItemLoading)}
+			{/* {charList && renderItems(charList)} */}
 			<button
 				className='button button__main button__long'
 				onClick={() => onRequest()}
-				disabled={loading}
+				disabled={fsmProcess === 'loading'}
 				style={{ display: charEnded ? 'none' : 'block' }}
 			>
 				<div className='inner'>load more</div>

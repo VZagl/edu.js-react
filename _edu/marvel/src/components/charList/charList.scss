@@ -33,12 +33,19 @@
 			transform: translateY(-8px);
 		}
 
+		&-appear {
+			opacity: 0;
+		}
+		&-active-appear {
+			opacity: 1;
+			transition: opacity 500ms ease-in;
+		}
 		&-enter {
 			opacity: 0;
 		}
 		&-enter-active {
 			opacity: 1;
-			transition: opacity 500ms ease-in;
+			transition: opacity 2500ms ease-in;
 		}
 		&-enter-done {
 			opacity: 1;

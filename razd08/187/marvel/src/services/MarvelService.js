@@ -10,6 +10,7 @@ const useMarvelService = () => {
 	const { request, clearError, fsmProcess, setProcess } = useHttp();
 
 	const getAllCharacters = async (perPage = 9, pageNum = 23) => {
+		setProcess('loading');
 		const res = await request(
 			`${_api.baseUrl}characters?limit=${perPage}&offset=${
 				pageNum * perPage
@@ -19,6 +20,7 @@ const useMarvelService = () => {
 	};
 
 	const getCharacter = async (_id) => {
+		setProcess('loading');
 		const res = await request(
 			`${_api.baseUrl}characters/${_id}?apikey=${_api.apikey}`
 		);
@@ -27,6 +29,7 @@ const useMarvelService = () => {
 	};
 
 	const getCharacterByName = async (_name) => {
+		setProcess('loading');
 		// console.log(`getCharacterByName(${_name})`);
 		const res = await request(
 			`${_api.baseUrl}characters?name=${_name}&apikey=${_api.apikey}`
@@ -51,6 +54,7 @@ const useMarvelService = () => {
 	});
 
 	const getAllComics = async (perPage = 8, pageNum = 0) => {
+		setProcess('loading');
 		const res = await request(
 			`${_api.baseUrl}comics?limit=${perPage}&offset=${
 				pageNum * perPage
@@ -60,6 +64,7 @@ const useMarvelService = () => {
 	};
 
 	const getComic = async (comicId) => {
+		setProcess('loading');
 		const res = await request(
 			`${_api.baseUrl}comics/${comicId}?apikey=${_api.apikey}`
 		);
