@@ -1,0 +1,2 @@
+- макет
+	- https://www.figma.com/file/xiC1B6ZlHvbiUK6FO3caxN/Marvel-DB?type=design&node-id=0-1&t=Cxf51mxViyk0et3a-0
