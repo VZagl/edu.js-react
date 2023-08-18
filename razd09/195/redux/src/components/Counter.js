@@ -4,16 +4,13 @@ import { inc, dec, rnd } from '../actions';
 
 const Counter = () => {
 	const counter = useSelector((state) => state.counter);
-	const payload = useSelector((state) => state.payload);
 	const dispatch = useDispatch();
 
 	//
 	console.log('>> Counter > render');
 	return (
 		<div className='jumbotron'>
-			<h1>
-				{counter} ({payload})
-			</h1>
+			<h1>{counter}</h1>
 			<button className='btn btn-primary' onClick={() => dispatch(dec())}>
 				DEC
 			</button>
