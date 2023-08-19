@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 
 export const useHttp = () => {
-	const [fsmProcess, setProcess] = useState('waiting');
+	// const [process, setProcess] = useState('waiting');
 
 	const request = useCallback(
 		async (
@@ -10,7 +10,7 @@ export const useHttp = () => {
 			body = null,
 			headers = { 'Content-Type': 'application/json' }
 		) => {
-			setProcess('loading');
+			// setProcess('loading');
 
 			try {
 				const response = await fetch(url, { method, body, headers });
@@ -20,10 +20,10 @@ export const useHttp = () => {
 				}
 
 				const data = await response.json();
-				// setProcess('confirmed');
+
 				return data;
 			} catch (e) {
-				setProcess('error');
+				// setProcess('error');
 				console.log('>> http.hook.js > useHttp > error');
 				throw e;
 			}
@@ -31,7 +31,14 @@ export const useHttp = () => {
 		[]
 	);
 
-	const clearError = useCallback(() => setProcess('loading'), []);
+	// const clearError = useCallback(() => {
+	// setProcess('loading');
+	// }, []);
 
-	return { request, clearError, fsmProcess, setProcess };
+	return {
+		request,
+		// clearError,
+		// process,
+		// setProcess
+	};
 };
