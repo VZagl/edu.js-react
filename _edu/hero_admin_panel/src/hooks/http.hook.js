@@ -11,7 +11,15 @@ export const useHttp = () => {
 			headers = { 'Content-Type': 'application/json' }
 		) => {
 			// setProcess('loading');
-
+			console.log(
+				'|> useHttp > request: ',
+				JSON.stringify({
+					url,
+					method,
+					body,
+					headers,
+				})
+			);
 			try {
 				const response = await fetch(url, { method, body, headers });
 

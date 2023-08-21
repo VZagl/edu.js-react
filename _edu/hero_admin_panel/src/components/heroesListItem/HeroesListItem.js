@@ -1,6 +1,10 @@
 import React from 'react';
 
-const HeroesListItem = ({ name, description, element }) => {
+import useHeroesService from '../../services/HeroesService';
+
+const HeroesListItem = ({ id, name, description, element }) => {
+	const { deleteHero } = useHeroesService();
+
 	let elementClassName;
 
 	switch (element) {
@@ -39,6 +43,7 @@ const HeroesListItem = ({ name, description, element }) => {
 					type='button'
 					className='btn-close btn-close'
 					aria-label='Close'
+					onClick={() => deleteHero(id)}
 				></button>
 			</span>
 		</li>

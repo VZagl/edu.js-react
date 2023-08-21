@@ -1,15 +1,11 @@
 import React from 'react';
-import { useHttp } from '../../hooks/http.hook';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import {
-	heroesFetching,
-	heroesFetched,
-	heroesFetchingError,
-} from '../../actions';
-import HeroesListItem from '../heroesListItem/HeroesListItem';
+import useHeroesService from '../../services/HeroesService';
 import Spinner from '../spinner/Spinner';
+
+import HeroesListItem from '../heroesListItem/HeroesListItem';
 
 // Задача для этого компонента:
 // При клике на "крестик" идет удаление персонажа из общего состояния
@@ -17,20 +13,44 @@ import Spinner from '../spinner/Spinner';
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
+	const [redrawing, setRegrawing] = useState(null);
 	const heroes = useSelector((state) => state.heroes);
 	const heroesLoadingStatus = useSelector((state) => state.heroesLoadingStatus);
-	const filterCurrent = useSelector((state) => state.filterCurrent);
-	const dispatch = useDispatch();
-	const { request } = useHttp();
+	const filtersCurrent = useSelector((state) => state.filtersCurrent);
+	const addHeroStatus = useSelector((state) => state.addHeroStatus);
+	const addHeroData = useSelector((state) => state.addHeroData);
+	const deleteHeroStatus = useSelector((state) => state.deleteHeroStatus);
+	const deleteHeroData = useSelector((state) => state.deleteHeroData);
+	// const dispatch = useDispatch();
+	const { getAllHeroes } = useHeroesService();
 
 	useEffect(() => {
-		dispatch(heroesFetching());
-		request('http://localhost:3001/heroes')
-			.then((data) => dispatch(heroesFetched(data)))
-			.catch(() => dispatch(heroesFetchingError()));
-
-		// eslint-disable-next-line
+		getAllHeroes();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	useEffect(() => {
+		if (addHeroStatus !== 'idle' || !addHeroData) return;
+		// console.log('>>HeroesList > useEffect[addHeroStatus]', addHeroStatus);
+		// console.log('addHeroData =', addHeroData);
+		heroes.push(addHeroData);
+		setRegrawing({});
+		// getAllHeroes();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [addHeroStatus]);
+
+	useEffect(() => {
+		if (deleteHeroStatus !== 'idle') return;
+		// console.log('>>HeroesList > useEffect[deleteHeroStatus]', deleteHeroStatus);
+		// console.log('deleteHeroData =', deleteHeroData);
+		heroes.splice(
+			heroes.findIndex((item) => item.id === deleteHeroData),
+			1
+		);
+		setRegrawing({});
+		// getAllHeroes();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [deleteHeroStatus]);
 
 	if (heroesLoadingStatus === 'loading') return <Spinner />;
 	if (heroesLoadingStatus === 'error')
@@ -41,14 +61,27 @@ const HeroesList = () => {
 			return <h5 className='text-center mt-5'>Героев пока нет</h5>;
 		}
 
-		return arr.map(({ id, ...props }) => {
-			return <HeroesListItem key={id} {...props} />;
+		return arr.map((item) => {
+			return <HeroesListItem key={item.id} {...item} />;
 		});
 	};
 
-	const elements = renderHeroesList(heroes);
+	const doHeroesFiltering = (_heroes, _filter) => {
+		if (!_filter || _filter === 'all') return _heroes;
+		return _heroes.filter((item) => (item.element === _filter ? item : null));
+	};
 
-	console.log('>> HeroesList > render');
+	const elements = renderHeroesList(doHeroesFiltering(heroes, filtersCurrent));
+	/*
+	console.log(
+		'>> HeroesList > render: filtersCurrent =',
+		filtersCurrent,
+		'elements =',
+		elements,
+		'addHeroStatus =',
+		addHeroStatus
+	);
+	//*/
 	return <ul>{elements}</ul>;
 };
 

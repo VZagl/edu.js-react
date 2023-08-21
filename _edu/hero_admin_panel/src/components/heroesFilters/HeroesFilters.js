@@ -1,9 +1,10 @@
-import React from 'react';
-// import classNames from 'classnames';
-import classNames from 'classnames/bind';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import classNames from 'classnames/bind';
 
-// import { filtersGet, filterSet } from '../../actions';
+import Spinner from '../spinner/Spinner';
+import useHeroesService from '../../services/HeroesService';
+import { filtersSet } from '../../actions';
 
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
@@ -12,35 +13,42 @@ import { useSelector, useDispatch } from 'react-redux';
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
-const filters = [
-	{ id: 'all', name: 'Все', style: 'btn-outline-dark' },
-	{ id: 'fire', name: 'Огонь', style: 'btn-danger' },
-	{ id: 'water', name: 'Вода', style: 'btn-primary' },
-	{ id: 'wind', name: 'Ветер', style: 'btn-success' },
-	{ id: 'earth', name: 'Земля', style: 'btn-secondary' },
-];
-
 const HeroesFilters = () => {
-	const filterCurrent = useSelector((state) => state.filterCurrent);
-	//  filters[0]?.id;
+	const filtersCurrent = useSelector((state) => state.filtersCurrent);
+	const filtersLoadingStatus = useSelector(
+		(state) => state.filtersLoadingStatus
+	);
+	const filters = useSelector((state) => state.filters);
 	const dispatch = useDispatch();
+	const { getAllFilters } = useHeroesService();
+
+	useEffect(() => {
+		getAllFilters();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const doFilter = (id) => {
-		console.log('>> HeroesFilters > doFilter', id);
-		// dispatch(filterSet(id));
+		// console.log('>> HeroesFilters > doFilter', id);
+		dispatch(filtersSet(id));
 	};
 
-	const getFilters = (filters) => {
-		if (!filters || filters.length === 0) return null;
-		return filters.map((item) => {
+	const renderContent = (_filters) => {
+		if (filtersLoadingStatus === 'loading') return <Spinner />;
+		if (filtersLoadingStatus === 'error') {
+			return <h5 className='text-center mt-5'>Ошибка загрузки</h5>;
+		}
+		if (!_filters || _filters.length === 0) return <h5>empty</h5>;
+
+		return _filters.map((item) => {
 			return (
 				<button
 					key={item.id}
 					className={classNames(
 						'btn',
 						item.style,
-						item.id === filterCurrent ? 'active' : null
+						item.id === filtersCurrent ? 'active' : null
 					)}
+					style={item.id === filtersCurrent ? { margin: 5 } : {}}
 					onClick={() => doFilter(item.id)}
 				>
 					{item.name}
@@ -48,36 +56,15 @@ const HeroesFilters = () => {
 			);
 		});
 	};
-	//
-	console.log('>> HeroesFilters > render');
+
+	/*
+	console.log('>> HeroesFilters > render', filters);
+	//*/
 	return (
 		<div className='card shadow-lg mt-4'>
 			<div className='card-body'>
 				<p className='card-text'>Отфильтруйте героев по элементам</p>
-				<div className='btn-group'>
-					{/* <button
-						className={classNames(
-							'btn',
-							'btn-outline-dark',
-							active === 'all' ? 'active' : null
-						)}
-					>
-						Все
-					</button>
-					<button
-						className={classNames({
-							'btn btn-danger': true,
-							active: false,
-						})}
-					>
-						Огонь
-					</button>
-					<button className='btn btn-primary'>Вода</button>
-					<button className='btn btn-success'>Ветер</button>
-					<button className='btn btn-secondary'>Земля</button> */}
-
-					{getFilters(filters) || <h3>empty</h3>}
-				</div>
+				<div className='btn-group'>{renderContent(filters)}</div>
 			</div>
 		</div>
 	);
