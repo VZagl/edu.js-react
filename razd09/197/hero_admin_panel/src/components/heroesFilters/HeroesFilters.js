@@ -27,6 +27,11 @@ const HeroesFilters = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const doFilter = (id) => {
+		// console.log('>> HeroesFilters > doFilter', id);
+		dispatch(filtersSet(id));
+	};
+
 	const renderContent = (_filters) => {
 		if (filtersLoadingStatus === 'loading') return <Spinner />;
 		if (filtersLoadingStatus === 'error') {
@@ -44,7 +49,7 @@ const HeroesFilters = () => {
 						item.id === filtersCurrent ? 'active' : null
 					)}
 					style={item.id === filtersCurrent ? { margin: 5 } : {}}
-					onClick={() => dispatch(filtersSet(item.id))}
+					onClick={() => doFilter(item.id)}
 				>
 					{item.name}
 				</button>

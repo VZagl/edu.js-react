@@ -1,13 +1,11 @@
 import React from 'react';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import useHeroesService from '../../services/HeroesService';
-import HeroesListItem from '../heroesListItem/HeroesListItem';
-
 import Spinner from '../spinner/Spinner';
-import './heroesList.scss';
+
+import HeroesListItem from '../heroesListItem/HeroesListItem';
 
 // Задача для этого компонента:
 // При клике на "крестик" идет удаление персонажа из общего состояния
@@ -15,6 +13,7 @@ import './heroesList.scss';
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
+	const [redrawing, setRegrawing] = useState(null);
 	const heroes = useSelector((state) => state.heroes);
 	const heroesLoadingStatus = useSelector((state) => state.heroesLoadingStatus);
 	const filtersCurrent = useSelector((state) => state.filtersCurrent);
@@ -22,8 +21,8 @@ const HeroesList = () => {
 	const addHeroData = useSelector((state) => state.addHeroData);
 	const deleteHeroStatus = useSelector((state) => state.deleteHeroStatus);
 	const deleteHeroData = useSelector((state) => state.deleteHeroData);
+	// const dispatch = useDispatch();
 	const { getAllHeroes } = useHeroesService();
-	const [filteredHeroes, setFilteredHeroes] = useState([]);
 
 	useEffect(() => {
 		getAllHeroes();
@@ -32,36 +31,26 @@ const HeroesList = () => {
 
 	useEffect(() => {
 		if (addHeroStatus !== 'idle' || !addHeroData) return;
+		// console.log('>>HeroesList > useEffect[addHeroStatus]', addHeroStatus);
+		// console.log('addHeroData =', addHeroData);
 		heroes.push(addHeroData);
+		setRegrawing({});
+		// getAllHeroes();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [addHeroStatus]);
 
 	useEffect(() => {
 		if (deleteHeroStatus !== 'idle') return;
+		// console.log('>>HeroesList > useEffect[deleteHeroStatus]', deleteHeroStatus);
+		// console.log('deleteHeroData =', deleteHeroData);
 		heroes.splice(
 			heroes.findIndex((item) => item.id === deleteHeroData),
 			1
 		);
+		setRegrawing({});
+		// getAllHeroes();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [deleteHeroStatus]);
-
-	useEffect(() => {
-		setFilteredHeroes(
-			heroes.filter(
-				(item) =>
-					!filtersCurrent ||
-					filtersCurrent === 'all' ||
-					item.element === filtersCurrent
-			)
-		);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [
-		heroes,
-		heroesLoadingStatus,
-		filtersCurrent,
-		addHeroStatus,
-		deleteHeroStatus,
-	]);
 
 	if (heroesLoadingStatus === 'loading') return <Spinner />;
 	if (heroesLoadingStatus === 'error')
@@ -69,23 +58,20 @@ const HeroesList = () => {
 
 	const renderHeroesList = (arr) => {
 		if (arr.length === 0) {
-			return (
-				<CSSTransition timeout={0} classNames='hero'>
-					<h5 className='text-center mt-5'>Героев пока нет</h5>
-				</CSSTransition>
-			);
+			return <h5 className='text-center mt-5'>Героев пока нет</h5>;
 		}
 
 		return arr.map((item) => {
-			return (
-				<CSSTransition key={item.id} timeout={500} classNames='hero'>
-					<HeroesListItem {...item} />
-				</CSSTransition>
-			);
+			return <HeroesListItem key={item.id} {...item} />;
 		});
 	};
 
-	const elements = renderHeroesList(filteredHeroes);
+	const doHeroesFiltering = (_heroes, _filter) => {
+		if (!_filter || _filter === 'all') return _heroes;
+		return _heroes.filter((item) => (item.element === _filter ? item : null));
+	};
+
+	const elements = renderHeroesList(doHeroesFiltering(heroes, filtersCurrent));
 	/*
 	console.log(
 		'>> HeroesList > render: filtersCurrent =',
@@ -96,7 +82,7 @@ const HeroesList = () => {
 		addHeroStatus
 	);
 	//*/
-	return <TransitionGroup component='ul'>{elements}</TransitionGroup>;
+	return <ul>{elements}</ul>;
 };
 
 export default HeroesList;

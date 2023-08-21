@@ -10,8 +10,8 @@ import {
 } from 'formik';
 import * as yup from 'yup';
 
-import useHeroesService from '../../services/HeroesService';
 import Spinner from '../spinner/Spinner';
+import useHeroesService from '../../services/HeroesService';
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -40,9 +40,9 @@ const HeroesAddForm = () => {
 		// console.log('>> HeroesAddForm > getInitFormValues');
 		return {
 			id: uuidGet(),
-			name: 'hero',
+			name: '',
 			description: '',
-			element: 'fire',
+			element: '',
 		};
 	}
 
