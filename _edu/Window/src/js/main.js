@@ -3,11 +3,14 @@ import modals from './modules/modals';
 import tabs from './modules/tabs';
 import forms from './modules/forms';
 import changeModalState from './modules/changeModalState';
+import timer from './modules/timer';
 
 window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
 
 	const modalState = { form: 0 };
+	const deadline = '2023-12-25';
+
 	changeModalState(modalState);
 
 	modals();
@@ -28,4 +31,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	);
 
 	forms(modalState);
+
+	timer('#timer', deadline);
 });
