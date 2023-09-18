@@ -14,6 +14,7 @@ const modals = () => {
 		const close = document.querySelector(closeSelector);
 		const modal = document.querySelector(modalSelector);
 		const windows = document.querySelectorAll('[data-modal]');
+		// const scroll = calcScroll();
 
 		triggers.forEach((item) =>
 			item.addEventListener('click', (e) => {
@@ -21,6 +22,9 @@ const modals = () => {
 				windows.forEach((item) => (item.style.display = 'none'));
 				modal.style.display = 'block';
 				// document.body.style.overflow = 'hidden';
+				// целесообразно ширину скроллбара вычислять при каждом отображении модального окна
+				const scroll = calcScroll();
+				document.body.style.marginRight = `${scroll}px`;
 				document.body.classList.add('modal-open');
 			})
 		);
@@ -30,6 +34,7 @@ const modals = () => {
 			windows.forEach((item) => (item.style.display = 'none'));
 			modal.style.display = 'none';
 			// document.body.style.overflow = '';
+			document.body.style.marginRight = '';
 			document.body.classList.remove('modal-open');
 		});
 
@@ -38,6 +43,7 @@ const modals = () => {
 			windows.forEach((item) => (item.style.display = 'none'));
 			modal.style.display = 'none';
 			// document.body.style.overflow = '';
+			document.body.style.marginRight = '';
 			document.body.classList.remove('modal-open');
 		});
 	}
@@ -47,6 +53,21 @@ const modals = () => {
 			document.querySelector(selector).style.display = 'block';
 			document.body.classList.add('modal-open');
 		}, time);
+	}
+
+	function calcScroll() {
+		const div = document.createElement('div');
+		div.style.width = '50px';
+		div.style.height = '50px';
+		div.style.overflowY = 'scroll';
+		div.style.visibility = 'hidden';
+
+		document.body.appendChild(div);
+		const scrollWidth = div.offsetWidth - div.clientWidth;
+		div.remove();
+		// console.log('scrollWidth =', scrollWidth);
+
+		return scrollWidth;
 	}
 
 	bindModal(
